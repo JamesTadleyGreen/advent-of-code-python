@@ -4,6 +4,7 @@ import time
 import os
 
 from importer import import_module_from_path
+from input import download_input
 
 
 def get_latest_year() -> int:
@@ -29,6 +30,8 @@ def parse_args():
     return args
 
 def get_data(year: int, day: int) -> str:
+    if not os.path.isfile(f'data/year-{year}/day-{day}.txt'):
+        download_input(year, day)
     with open(f'data/year-{year}/day-{day}.txt') as f:
         lines = f.read()[:-1]
     return lines
