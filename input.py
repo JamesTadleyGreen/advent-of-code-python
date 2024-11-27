@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def get_url(year: int, day: int):
     return f"https://adventofcode.com/{year}/day/{day}/input"
