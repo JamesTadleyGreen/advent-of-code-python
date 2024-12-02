@@ -30,8 +30,10 @@ def part2(input: str) -> int:
     for line in input.splitlines():
         parsed_line = [int(i) for i in line.split()]
         for i in range(len(parsed_line)):
-            tmp_line = parsed_line[:i] + parsed_line[i + 1 :]
-            if is_monotone(tmp_line) and bounded(tmp_line):
+            permutation = (
+                parsed_line[:i] + parsed_line[i + 1:]
+            )  # There's a smarter way of doing this I think
+            if is_monotone(permutation) and bounded(permutation):
                 acc += 1
                 break
     return acc
