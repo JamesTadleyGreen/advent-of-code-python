@@ -33,6 +33,7 @@ def parse_args():
     parser.add_argument("--day", type=int, default=None)
     parser.add_argument("--part", type=int, default=None)
     parser.add_argument("--number_of_runs", type=int, default=None)
+    parser.add_argument("--test", action="store_true")
     args = parser.parse_args()
     if args.day is None:
         args.day = get_latest_day(args.year)
@@ -53,9 +54,15 @@ def main():
     data = get_data(args.year, args.day)
     time = 0
     if args.part == 1 or args.part is None:
-        time += timer(day.part1, data, args.number_of_runs)
+        if args.test:
+            print("Part 1:", day.part1(data))
+        else:
+            time += timer(day.part1, data, args.number_of_runs)
     if args.part == 2 or args.part is None:
-        time += timer(day.part2, data, args.number_of_runs)
+        if args.test:
+            print("Part 2:", day.part2(data))
+        else:
+            time += timer(day.part2, data, args.number_of_runs)
     print(f"Total average time: {time*1_000:.1f}ms")
 
 
