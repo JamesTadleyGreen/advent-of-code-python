@@ -17,7 +17,8 @@ def check_all(grid: Grid, x: int, y: int) -> int:
 
 def part1(inp: str) -> int:
     acc = 0
-    grid = Grid(inp.splitlines())
+    grid = Grid(inp)
+    grid.pad(4, ".")
     all_xs = grid.find("X")
     for x in all_xs:
         acc += check_all(grid, *x)
@@ -33,7 +34,8 @@ def check_x(m, x, y) -> int:
 
 def part2(inp: str) -> int:
     acc = 0
-    grid = Grid(inp.splitlines())
+    grid = Grid(inp)
+    grid.pad(4, ".")
     all_as = grid.find("A")
     for a in all_as:
         acc += check_x(grid, *a)
