@@ -3,7 +3,7 @@ import re
 
 def part1(input: str) -> int:
     acc = 0
-    matches = re.findall("mul\(\d+,\d+\)", input)
+    matches = re.findall("mul\(\d{1,3}+,\d{1,3}\)", input)
     for group in matches:
         first, last = group[4:-1].split(",")
         acc += int(first) * int(last)
