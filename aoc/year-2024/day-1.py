@@ -1,6 +1,7 @@
-def parse_input(input: str) -> tuple[list[int, int]]:
-    l = [[int(j) for j in i.split()] for i in input.split('\n')]
-    return zip(*l)
+def parse_input(input: str) -> tuple[list[int], list[int]]:
+    ls: list[list[int]] = [[int(j) for j in i.split()]
+                           for i in input.split("\n")]
+    return zip(*ls)  # type: ignore , looks like zip isn't typechecked
 
 
 def part1(input: str) -> int:
