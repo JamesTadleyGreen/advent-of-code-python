@@ -11,7 +11,8 @@ class Grid(Generic[T]):
 
     def find(self, value: T) -> list[T]:
         all_loc = np.where(self.grid == value)
-        return [(all_loc[1][i], all_loc[0][i]) for i in range(len(all_loc[0]))]
+        return [(all_loc[0][i], all_loc[1][i]) for i in range(len(all_loc[0]))]
 
     def pad(self, pad_with, value):
-        self.grid = np.pad(self.grid, pad_with, "constant", constant_values=value)
+        self.grid = np.pad(self.grid, pad_with, "constant",
+                           constant_values=value)
